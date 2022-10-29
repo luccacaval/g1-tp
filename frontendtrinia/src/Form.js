@@ -49,10 +49,9 @@ function Form() {
     type ="radio"
     value={form.Type}
     onChange={e =>{
-      console.log(form)
       setForm({
         ...form,
-        Type: e.target.previousSibling.textContent
+        Type: "Pelicula"
         
       })
     }}
@@ -65,12 +64,10 @@ function Form() {
     type ="radio"
     value={form.Type}
     onChange={
-      e =>{
-        console.log(form)
-        console.log(e.target.previousSibling.textContent);
+      ()=>{
       setForm({
         ...form,
-        Type: e.target.previousSibling.textContent,
+        Type: "Serie",
         
       })
     }}
