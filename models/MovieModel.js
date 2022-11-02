@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const CalifSchema = new mongoose.Schema({
-    Calif : Number
+    Calif : {"type" : Number, "required" : true} 
 },{ _id: false })
 
 const MovieSchema = new mongoose.Schema({
@@ -9,7 +9,7 @@ const MovieSchema = new mongoose.Schema({
     "Type" : {"type" : String, "required" : true},
     "Gender" : {"type" : String, "required" : true},
     "Sinopsis" : {"type" : String, "required" : true},
-    "Califs" : {"type" : Number, "required" : true}
+    "Califs" : [CalifSchema]
 })
 
 const Movie = mongoose.model("Movie", MovieSchema);

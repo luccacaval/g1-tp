@@ -17,4 +17,12 @@ MovieRouter.post('/movies', (req, res) =>{
     })
 })
 
+MovieRouter.put('/movies/:id', (req,res) => {
+    Movie.findByIdAndUpdate(req.params.id, req.body,(err, movie) => {
+        console.log(req.body)
+        res.status(200).json(movie)
+    })
+})
+
+
 export default MovieRouter;

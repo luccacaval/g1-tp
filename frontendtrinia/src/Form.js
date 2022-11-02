@@ -9,7 +9,7 @@ function Form() {
       "Type" : '',
       "Gender" : '',
       "Sinopsis" : '',
-      "Califs" : ''
+      "Califs" : [{'Calif' : 0}]
       });
 
       function handleSubmit(event) {
@@ -19,7 +19,8 @@ function Form() {
         axios.post('/movies', form)
         .then(respose =>{
           console.log("Peticion Envidada")
-          console.log(respose)}
+          console.log(respose)
+          window.location.reload()}
         )
         .catch(error => {
           console.error(error);
@@ -106,11 +107,11 @@ function Form() {
     type = "number"
     min = "0"
     max = "10" 
-    value={form.Califs}
+    value={form.Califs[0].Calif}
     onChange={e =>{
       setForm({
         ...form,
-        Califs: +e.target.value
+        Califs : [{Calif : +e.target.value}]
       })
     }}
     />

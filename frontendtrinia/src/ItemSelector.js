@@ -8,7 +8,7 @@ const [ItemArr, setItemArr] = useState([]);
 const [DisplayedItems, setDisplayedItems] = useState([]);
 
 const SelectType = (event,Type) => {
-    setDisplayedItems(ItemArr.filter(Item => Item.Type === Type).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis}  Calif={item.Califs} key={item._id}/> ))
+    setDisplayedItems(ItemArr.filter(Item => Item.Type === Type).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis}  Califs={item.Califs} key={item._id} item_id = {item._id}/ > ))
 }
 
     useEffect(() => {
