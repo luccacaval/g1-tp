@@ -18,8 +18,9 @@ MovieRouter.post('/movies', (req, res) =>{
 })
 
 MovieRouter.put('/movies/:id', (req,res) => {
-    Movie.findByIdAndUpdate(req.params.id, req.body,(err, movie) => {
+    Movie.findByIdAndUpdate(req.params.id, { Califs: req.body }).exec((err, movie) => {
         console.log(req.body)
+        if (err) return console.error(err);
         res.status(200).json(movie)
     })
 })

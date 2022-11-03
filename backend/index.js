@@ -7,7 +7,7 @@ import MovieRouter from "./routers/movieRouter.js";
 
 //config vars
 const port = process.env.port || 4000;
-const db   = process.env.DB   || 'mongodb://127.0.0.1';
+const db   = process.env.DB   || 'mongodb://127.0.0.1/test';
 
 //Instanciar servidor http y db
 

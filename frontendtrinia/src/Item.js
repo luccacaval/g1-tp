@@ -12,7 +12,7 @@ function handleSubmit(event){
     event.preventDefault()
     props.Califs.push(newCalif)
     console.log(props.Califs);
-    axios.put('/movies/' + props.item_id, props.Califs.push(newCalif))
+    axios.put('/movies/' + props.item_id, props.Califs)
     .then(respose =>{
         console.log("Peticion Envidada")
         console.log(respose)}
@@ -20,6 +20,7 @@ function handleSubmit(event){
       .catch(error => {
         console.error(error);
       })
+      window.location.reload()
 }
 
     useEffect(() => {
@@ -41,6 +42,7 @@ function handleSubmit(event){
                 <li>Sinopsis: {props.Sinopsis}</li>
                 <li>Calificación: {CalifProm}</li>
                 <form onSubmit={handleSubmit}>
+                    <label>Ingrese su Calificacion : </label>
                     <input
                     data-itemid = {props.item_id} 
                     type= "number"
