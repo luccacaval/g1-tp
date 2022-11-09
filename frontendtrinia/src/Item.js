@@ -8,7 +8,21 @@ const [newCalif, setnewCalif] = useState({
     Calif : 0
 });
 
-function handleSubmit(event){
+
+function deleteItem(event){
+    event.preventDefault()
+    axios.delete('/movies/' + props.item_id)
+    .then(respose =>{
+        console.log("Peticion Envidada")
+        console.log(respose)}
+      )
+      .catch(error => {
+        console.error(error);
+      })
+      window.location.reload()
+}
+
+function handleCalif(event){
     event.preventDefault()
     props.Califs.push(newCalif)
     console.log(props.Califs);
@@ -31,17 +45,18 @@ function handleSubmit(event){
         }
         console.log(props.Califs)
         prom = prom / props.Califs.length;
+        prom = prom.toFixed(2)
         setCalifProm(prom) 
     }, [props.Califs])
+
     
     return (
-        <div>
+        <div className="form">
             <h3>{props.Name}</h3>
-            <ul>
-                <li>Genero: {props.Gender}</li>
-                <li>Sinopsis: {props.Sinopsis}</li>
-                <li>Calificación: {CalifProm}</li>
-                <form onSubmit={handleSubmit}>
+                <p>Genero: {props.Gender}</p>
+                <p>Sinopsis: {props.Sinopsis}</p>
+                <p>Calificación: {CalifProm}</p>
+                <form onSubmit={handleCalif}>
                     <label>Ingrese su Calificacion : </label>
                     <input
                     data-itemid = {props.item_id} 
@@ -58,7 +73,8 @@ function handleSubmit(event){
                     />
                     <button type = "submit">Enviar</button>
                 </form>
-            </ul>
+            
+            <p>{props.admin_mode ? <button onClick={deleteItem}>Eliminar</button> : ''}</p>
         </div>
     )
 } 

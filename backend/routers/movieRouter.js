@@ -25,5 +25,11 @@ MovieRouter.put('/movies/:id', (req,res) => {
     })
 })
 
+MovieRouter.delete('/movies/:id', (req,res) => {
+    Movie.findByIdAndDelete(req.params.id,(err, movie) =>{
+        if (err) return console.error(err);
+        res.status(200).json(movie)
+    } )
+})
 
 export default MovieRouter;

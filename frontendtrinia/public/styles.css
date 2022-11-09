@@ -1,0 +1,67 @@
+body{
+  background: rgb(23,35,222);
+background: linear-gradient(90deg, rgba(23,35,222,1) 15%, rgba(20,33,158,1) 20%, rgba(5,19,77,1) 25%, rgba(5,19,77,1) 75%, rgba(23,35,222,1) 83%);
+}
+
+
+.carru{
+color: red;
+
+}
+
+#series_desp{
+  width: 150px;
+}
+#pelis-desp{
+  width: 150px;
+  float: right;
+}
+
+#text-center{
+text-align: center;
+}
+.titulos{
+  color: red;
+  font-family: Comic Sans MS;
+}
+
+
+.form {
+  background: rgb(22,60,13);
+background: linear-gradient(90deg, rgba(22,60,13,1) 6%, rgba(5,19,2,1) 26%, rgba(0,0,0,1) 50%, rgba(5,19,2,1) 75%, rgba(22,60,13,1) 94%);
+color: #ff59ff;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border: 3px solid;
+  border-color: #051302;
+}
+
+.img{
+  height: 183px;
+  width: 150px;
+  float: right;
+}
+
+.cabra {
+  width: 10%;
+}
+
+.centrar {
+  text-align: center;
+}
+
+.right {
+  float: right;
+}
+
+#centered{
+top: 50%;
+left: 50%;
+border: 7px solid;
+border-color: gold;
+padding-bottom: auto;
+margin-left: 25%;
+margin-right: 25%;
+}

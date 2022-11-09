@@ -9,7 +9,8 @@ function Form() {
       "Type" : '',
       "Gender" : '',
       "Sinopsis" : '',
-      "Califs" : [{'Calif' : 0}]
+      "Califs" : [{'Calif' : 0}],
+      "Image" : ''
       });
 
       function handleSubmit(event) {
@@ -27,11 +28,15 @@ function Form() {
         })
       }
 
+      function reload(event) {
+      window.location.reload();
+    }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="centrar">
     <label>
     Nombre
-    <input 
+    <input
     value={form.Name}
     onChange={e =>{
       setForm({
@@ -41,7 +46,7 @@ function Form() {
     }}
     />
     </label>
-    <br/>  
+    <br/>
     <label>
     Pelicula
     </label>
@@ -53,7 +58,7 @@ function Form() {
       setForm({
         ...form,
         Type: "Pelicula"
-        
+
       })
     }}
     />
@@ -69,14 +74,14 @@ function Form() {
       setForm({
         ...form,
         Type: "Serie",
-        
+
       })
     }}
     />
     <br/>
     <label>
     Genero
-    <input 
+    <input
     value={form.Gender}
     onChange={e =>{
       setForm({
@@ -89,7 +94,7 @@ function Form() {
     <br></br>
     <label>
     Sinopsis
-    <input 
+    <input
     value={form.Sinopsis}
     onChange={e =>{
       setForm({
@@ -106,7 +111,7 @@ function Form() {
     <input
     type = "number"
     min = "0"
-    max = "10" 
+    max = "10"
     value={form.Califs[0].Calif}
     onChange={e =>{
       setForm({
@@ -115,9 +120,24 @@ function Form() {
       })
     }}
     />
-    <input 
-    type = "submit"
+    <br></br>
+    <label>
+    Imagen
+    <input
+    value={form.Image}
+    onChange={e =>{
+      setForm({
+        ...form,
+        Image: e.target.value
+      })
+    }}
     />
+    </label>
+    <br></br>
+  <input class="btn btn-success"
+  type = "submit"
+  onClick={reload}
+  />
     </form>
   )
 }

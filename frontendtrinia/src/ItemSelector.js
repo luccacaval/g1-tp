@@ -5,15 +5,9 @@ import axios from "axios";
 
 const ItemSelector = () => {
 const [ItemArr, setItemArr] = useState([]);
+const [ItemType, setItemType] = useState("");
 const [DisplayedItems, setDisplayedItems] = useState([]);
-
-const SelectType = (event,Type) => {
-    setDisplayedItems(ItemArr.filter(Item => Item.Type === Type).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis}  Califs={item.Califs} key={item._id} item_id = {item._id}/ > ))
-}
-
-    useEffect(() => {
-        console.log(DisplayedItems);
-    }, [DisplayedItems])
+const [adminEnable, setadminEnable] = useState(false);
 
     useEffect(() => {
         axios.get('/movies')
@@ -24,12 +18,19 @@ const SelectType = (event,Type) => {
             console.error(error)
         })
         }, [])
+
+        useEffect(() => {
+            console.log(ItemArr);
+            if (ItemType !== "") setDisplayedItems(ItemArr.filter(Item => Item.Type === ItemType).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis} Califs={item.Califs} key={item._id} item_id = {item._id} admin_mode = {adminEnable}/>))
+        }, [adminEnable, ItemType])
     
     return (
         <div>
-        <button onClick={event => SelectType(event, "Pelicula")}>Peliculas</button>
-        <button onClick={event => SelectType(event, "Serie")}>Series</button>
-        {DisplayedItems}
+            <button className="btn btn-primary"onClick={event => setadminEnable(!adminEnable)}>Activar/Desactivar modo de administrador</button>
+            <br></br>
+            <button className="btn btn-primary"onClick={event => setItemType("Pelicula")}>Peliculas</button>
+            <button className="btn btn-danger right"onClick= { event => setItemType("Serie")}>Series</button>
+            {DisplayedItems}
         </div>
     );
 }

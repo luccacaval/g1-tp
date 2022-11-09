@@ -68,7 +68,6 @@ const Header = props => {
   };
   return (
     <nav className="justify-content-center navbar navbar-expand-lg navbar-dark bg-dark">
-      <h1>Soy un titulo</h1>
     </nav>
   );
 };

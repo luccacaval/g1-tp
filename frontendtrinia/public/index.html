@@ -1,19 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css">
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <title>React App</title>
+    <title>TriniReseñas.net</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="centered">
+      <div class="d-flex justify-content-center" id="text-center">
+          <h2 class="titulos">TriniReseñas.net</h2>
+      </div>
+      <div id="pelis-desp" class="carru">
+        <h2>mejores peliculas</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+          <img src="https://resizing.flixster.com/kxejUSFjS4mtH8RTMhPaRSG_kp0=/740x380/v2/https://statcdn.fandango.com/MPX/image/NBCU_Fandango/459/359/thumb_B33AE747-184C-4B10-8EEF-4CA4D29F14BA.jpg" alt="Chania">
+          <div class="carousel-caption">
+            <p>El señor de los anillos</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="https://resizing.flixster.com/kxejUSFjS4mtH8RTMhPaRSG_kp0=/740x380/v2/https://statcdn.fandango.com/MPX/image/NBCU_Fandango/459/359/thumb_B33AE747-184C-4B10-8EEF-4CA4D29F14BA.jpg" alt="Chicago">
+          <div class="carousel-caption">
+            <p>CARS</p>
+          </div>
+        </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div id="series_desp"class="carru" >
+        <h2>mejores series</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+          <img src="https://resizing.flixster.com/kxejUSFjS4mtH8RTMhPaRSG_kp0=/740x380/v2/https://statcdn.fandango.com/MPX/image/NBCU_Fandango/459/359/thumb_B33AE747-184C-4B10-8EEF-4CA4D29F14BA.jpg" alt="Chania">
+          <div class="carousel-caption">
+            <p>El señor de los anillos</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="https://resizing.flixster.com/kxejUSFjS4mtH8RTMhPaRSG_kp0=/740x380/v2/https://statcdn.fandango.com/MPX/image/NBCU_Fandango/459/359/thumb_B33AE747-184C-4B10-8EEF-4CA4D29F14BA.jpg" alt="Chicago">
+          <div class="carousel-caption">
+            <p>CARS</p>
+          </div>
+        </div>
+          </div>
+
+        </div>
+      </div>
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+      <div id="root" class="titulos" ></div>
+
+    </div>
   </body>
 </html>
