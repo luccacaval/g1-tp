@@ -21,12 +21,13 @@ const [adminEnable, setadminEnable] = useState(false);
 
         useEffect(() => {
             console.log(ItemArr);
-            if (ItemType !== "") setDisplayedItems(ItemArr.filter(Item => Item.Type === ItemType).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis} Califs={item.Califs} key={item._id} item_id = {item._id} admin_mode = {adminEnable}/>))
+            if (ItemType !== "") setDisplayedItems(ItemArr.filter(Item => Item.Type === ItemType).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis} Califs={item.Califs} key={item._id} item_id = {item._id} admin_mode = {adminEnable} Image= {item.Image}/>))
         }, [adminEnable, ItemType])
-    
+
     return (
         <div>
-            <button className="btn btn-primary"onClick={event => setadminEnable(!adminEnable)}>Activar/Desactivar modo de administrador</button>
+            <div className="centre">
+            <button className="btn btn-warning" id="centre" onClick={event => setadminEnable(!adminEnable)}>Admin</button></div>
             <br></br>
             <button className="btn btn-primary"onClick={event => setItemType("Pelicula")}>Peliculas</button>
             <button className="btn btn-danger right"onClick= { event => setItemType("Serie")}>Series</button>

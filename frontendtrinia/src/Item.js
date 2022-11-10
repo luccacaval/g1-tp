@@ -29,12 +29,12 @@ function handleCalif(event){
     axios.put('/movies/' + props.item_id, props.Califs)
     .then(respose =>{
         console.log("Peticion Envidada")
-        console.log(respose)}
+        console.log(respose)
+        window.location.reload()}
       )
       .catch(error => {
         console.error(error);
       })
-      window.location.reload()
 }
 
     useEffect(() => {
@@ -46,20 +46,21 @@ function handleCalif(event){
         console.log(props.Califs)
         prom = prom / props.Califs.length;
         prom = prom.toFixed(2)
-        setCalifProm(prom) 
+        setCalifProm(prom)
     }, [props.Califs])
 
-    
+
     return (
         <div className="form">
+          <img className="img"src={props.Image}/>
             <h3>{props.Name}</h3>
                 <p>Genero: {props.Gender}</p>
                 <p>Sinopsis: {props.Sinopsis}</p>
                 <p>Calificación: {CalifProm}</p>
                 <form onSubmit={handleCalif}>
                     <label>Ingrese su Calificacion : </label>
-                    <input
-                    data-itemid = {props.item_id} 
+                    <input className="cabra"
+                    data-itemid = {props.item_id}
                     type= "number"
                     min = "0"
                     max = "10"
@@ -71,12 +72,12 @@ function handleCalif(event){
                         })
                       }}
                     />
-                    <button type = "submit">Enviar</button>
+                    <button className="btn btn-success"type = "submit">Enviar</button>
                 </form>
-            
-            <p>{props.admin_mode ? <button onClick={deleteItem}>Eliminar</button> : ''}</p>
+
+            <p>{props.admin_mode ? <button className="btn btn-danger default" onClick={deleteItem}>Eliminar</button> : ''}</p>
         </div>
     )
-} 
+}
 
 export default Item

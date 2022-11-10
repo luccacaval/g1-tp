@@ -38,8 +38,13 @@ color: #ff59ff;
   border-color: #051302;
 }
 
+.image {
+  height: 100px;
+  width: 200px;
+}
+
 .img{
-  height: 183px;
+  height: 190px;
   width: 150px;
   float: right;
 }
@@ -49,6 +54,10 @@ color: #ff59ff;
 }
 
 .centrar {
+  text-align: center;
+}
+
+.centre {
   text-align: center;
 }
 
