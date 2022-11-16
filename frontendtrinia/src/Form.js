@@ -3,13 +3,13 @@ import { useState } from "react";
 import axios from 'axios'
 
 
-function Form() {
+const Form = props => {
     const [form, setForm] = useState({
       "Name" :'',
       "Type" : '',
       "Gender" : '',
       "Sinopsis" : '',
-      "Califs" : [{'Calif' : 0}],
+      "Califs" :  [0],
       "Image" : ''
       });
 
@@ -21,16 +21,14 @@ function Form() {
         .then(respose =>{
           console.log("Peticion Envidada")
           console.log(respose)
-          window.location.reload()}
+          props.submit()
+          }
         )
         .catch(error => {
           console.error(error);
         })
       }
 
-      function reload(event) {
-      window.location.reload();
-    }
 
   return (
     <form onSubmit={handleSubmit} className="centrar">
@@ -112,11 +110,11 @@ function Form() {
     type = "number"
     min = "0"
     max = "10"
-    value={form.Califs[0].Calif}
+    value={form.Califs[0]}
     onChange={e =>{
       setForm({
         ...form,
-        Califs : [{Calif : +e.target.value}]
+        Califs : [+e.target.value]
       })
     }}
     />
@@ -136,7 +134,6 @@ function Form() {
     <br></br>
   <input class="btn btn-success"
   type = "submit"
-  onClick={reload}
   />
     </form>
   )

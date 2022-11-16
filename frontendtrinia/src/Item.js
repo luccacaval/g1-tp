@@ -3,10 +3,10 @@ import { useState } from "react";
 import axios from 'axios';
 
 const Item = props => {
+const [Califs, setCalifs] = useState(props.Califs);  
 const [CalifProm, setCalifProm] = useState(0);
-const [newCalif, setnewCalif] = useState({
-    Calif : 0
-});
+const [newCalif, setnewCalif] = useState(0);
+
 
 
 function deleteItem(event){
@@ -14,40 +14,39 @@ function deleteItem(event){
     axios.delete('/movies/' + props.item_id)
     .then(respose =>{
         console.log("Peticion Envidada")
-        console.log(respose)}
+        console.log(respose)
+        props.delete()}
       )
       .catch(error => {
         console.error(error);
       })
-      window.location.reload()
 }
 
 function handleCalif(event){
     event.preventDefault()
-    props.Califs.push(newCalif)
+    setCalifs([...Califs, newCalif])
     console.log(props.Califs);
-    axios.put('/movies/' + props.item_id, props.Califs)
+    axios.put('/movies/' + props.item_id, Califs)
     .then(respose =>{
         console.log("Peticion Envidada")
         console.log(respose)
-        window.location.reload()}
+      }
       )
       .catch(error => {
         console.error(error);
       })
 }
 
-    useEffect(() => {
-        let prom = 0;
-        console.log()
-        for (const calif of props.Califs) {
-            prom += calif.Calif
-        }
-        console.log(props.Califs)
-        prom = prom / props.Califs.length;
-        prom = prom.toFixed(2)
-        setCalifProm(prom)
-    }, [props.Califs])
+useEffect(() => {
+  let prom = 0;
+  console.log(Califs);
+  console.log(typeof(Califs));
+  for (const Calif of Califs) {
+    prom += Calif
+  }
+  prom = prom / Califs.length
+  setCalifProm(prom)
+}, [Califs])
 
 
     return (
@@ -64,12 +63,11 @@ function handleCalif(event){
                     type= "number"
                     min = "0"
                     max = "10"
-                    value = {newCalif.Calif}
+                    value = {newCalif}
                     onChange={e =>{
-                        setnewCalif({
-                          ...newCalif,
-                          Calif : +e.target.value
-                        })
+                        setnewCalif(
+                          +e.target.value
+                        )
                       }}
                     />
                     <button className="btn btn-success"type = "submit">Enviar</button>
