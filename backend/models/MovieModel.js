@@ -10,7 +10,7 @@ const MovieSchema = new mongoose.Schema({
     "Gender" : {"type" : String, "required" : true},
     "Sinopsis" : {"type" : String, "required" : true},
     "Califs" : [Number],
-    "Image" : String
+    "ImagePath" : String
 })
 
 const Movie = mongoose.model("Movie", MovieSchema);

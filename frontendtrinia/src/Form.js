@@ -1,7 +1,7 @@
 import React from "react";
-import { useState } from "react";
-import axios from 'axios'
-
+import { useState, useRef  } from "react";
+import axios from 'axios';
+import Photo from './Photo';
 
 const Form = props => {
     const [form, setForm] = useState({
@@ -10,14 +10,31 @@ const Form = props => {
       "Gender" : '',
       "Sinopsis" : '',
       "Califs" :  [0],
-      "Image" : ''
+      "Image" : '',
+      "ImagePath" : ''
       });
 
+    const fileInput = useRef(null);
+
+
+
+
       function handleSubmit(event) {
-        event.preventDefault()
-        console.log(form)
-        console.log(JSON.stringify(form))
-        axios.post('/movies', form)
+        event.preventDefault();
+        const config = {
+          headers: { "Content-Type": "multipart/form-data" }
+        };
+        const data = {
+          Name : form.Name,
+          Type : form.Type,
+          Gender : form.Gender,
+          Sinopsis : form.Sinopsis,
+          Califs :  form.Califs,
+          Image : fileInput.current.files[0],
+          ImagePath : ''
+        }
+
+        axios.post('/movies', data,config)
         .then(respose =>{
           console.log("Peticion Envidada")
           console.log(respose)
@@ -31,10 +48,11 @@ const Form = props => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="centrar">
+    <form onSubmit={handleSubmit} className="centre form">
     <label>
     Nombre
     <input
+    className="input"
     value={form.Name}
     onChange={e =>{
       setForm({
@@ -49,6 +67,7 @@ const Form = props => {
     Pelicula
     </label>
     <input
+    className="input"
     name = "Type"
     type ="radio"
     value={form.Type}
@@ -64,6 +83,7 @@ const Form = props => {
     Serie
     </label>
     <input
+    className="input"
     name = "Type"
     type ="radio"
     value={form.Type}
@@ -80,6 +100,7 @@ const Form = props => {
     <label>
     Genero
     <input
+    className="input"
     value={form.Gender}
     onChange={e =>{
       setForm({
@@ -93,6 +114,7 @@ const Form = props => {
     <label>
     Sinopsis
     <input
+    className="input"
     value={form.Sinopsis}
     onChange={e =>{
       setForm({
@@ -107,6 +129,7 @@ const Form = props => {
     Calificacion
     </label>
     <input
+    className="input"
     type = "number"
     min = "0"
     max = "10"
@@ -120,21 +143,13 @@ const Form = props => {
     />
     <br></br>
     <label>
-    Imagen
-    <input
-    value={form.Image}
-    onChange={e =>{
-      setForm({
-        ...form,
-        Image: e.target.value
-      })
-    }}
-    />
+      Subir una imagen
+      <input type="file" ref={fileInput} name="image" />
     </label>
+   
     <br></br>
-  <input class="btn btn-success"
-  type = "submit"
-  />
+  <input className="btn btn-success"
+  type = "submit"/>
     </form>
   )
 }

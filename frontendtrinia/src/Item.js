@@ -39,8 +39,6 @@ function handleCalif(event){
 
 useEffect(() => {
   let prom = 0;
-  console.log(Califs);
-  console.log(typeof(Califs));
   for (const Calif of Califs) {
     prom += Calif
   }
@@ -50,7 +48,7 @@ useEffect(() => {
 
 
     return (
-        <div className="form">
+        <div className="itemcard">
           <img className="img"src={props.Image}/>
             <h3>{props.Name}</h3>
                 <p>Genero: {props.Gender}</p>

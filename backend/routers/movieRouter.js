@@ -1,7 +1,39 @@
 import express from "express";
 import Movie from "../models/MovieModel.js";
+import multer from "multer";
 
 const MovieRouter = express.Router()
+
+MovieRouter.use((error, req, res, next) => {
+    console.log('This is the rejected field ->', error.field);
+  });
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, "./uploads");
+    },
+    filename: (req, file, cb) => {
+      cb(null, new Date().toISOString() + file.originalname);
+    }
+  });
+  
+  const limits = {
+    fileSize: 2 * 1024 * 1024
+  };
+  
+  const fileFilter = (req, file, cb) => {
+    if (file.mimetype == "image/jpeg" || file.mimetype == "image/png")
+      cb(null, true);
+    else cb(null, false);
+  };
+  
+  const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter,
+    limits: limits
+  });
+  
+  
 
 MovieRouter.get('/movies', (req, res) =>{
     Movie.find((err, Movies) => {
@@ -9,9 +41,9 @@ MovieRouter.get('/movies', (req, res) =>{
     })
 })
 
-MovieRouter.post('/movies', (req, res) =>{
+MovieRouter.post('/movies', upload.single("image"),(req, res) =>{
     const Movie1 = Movie(req.body)
-    console.log(req.body);
+    Movie1.ImagePath = req.file.path
     Movie1.save((err, Movie1) => {
         res.status(201).json(Movie1);
     })
