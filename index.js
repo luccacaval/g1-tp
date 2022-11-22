@@ -1,7 +1,6 @@
 // Imports
 import express from "express";
 import mongoose from "mongoose";
-import morgan from "morgan";
 import cors from "cors";
 import MovieRouter from "./routers/movieRouter.js";
 import dotenv from "dotenv"
@@ -27,7 +26,6 @@ mongoose.connect(db,() => {
 
 
 app.use(express.json());
-app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static('public'));
