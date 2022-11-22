@@ -8,7 +8,7 @@ import path from "node:path"
 
 
 //config vars
-const port = process.env.port || 4000;
+const port = process.env.PORT || 4000;
 const db   = process.env.DB   || 'mongodb://127.0.0.1/test';
 
 //Instanciar servidor http y db
