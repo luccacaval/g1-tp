@@ -22,7 +22,7 @@ const [adminEnable, setadminEnable] = useState(false);
 
 
         useEffect(() => {
-            if (ItemType !== "") setDisplayedItems(ItemArr.filter(Item => Item.Type === ItemType).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis} Califs={item.Califs} key={item._id} item_id = {item._id} admin_mode = {adminEnable} Image= {item.Image} delete={props.submit}/>))
+            if (ItemType !== "") setDisplayedItems(ItemArr.filter(Item => Item.Type === ItemType).map(item => <Item Name={item.Name} Gender={item.Gender} Sinopsis={item.Sinopsis} Califs={item.Califs} key={item._id} item_id = {item._id} admin_mode = {adminEnable} Image= {item.ImagePath} delete={props.submit}/>))
         }, [adminEnable, ItemType,ItemArr])
 
     return (

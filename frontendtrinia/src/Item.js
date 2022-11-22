@@ -46,10 +46,11 @@ useEffect(() => {
   setCalifProm(prom)
 }, [Califs])
 
+console.log(props.ImagePath);
 
     return (
         <div className="itemcard">
-          <img className="img"src={props.Image}/>
+          <img className="img" src={props.ImagePath}/>
             <h3>{props.Name}</h3>
                 <p>Genero: {props.Gender}</p>
                 <p>Sinopsis: {props.Sinopsis}</p>

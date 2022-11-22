@@ -48,7 +48,7 @@ const Form = props => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="centre form">
+    <form onSubmit={handleSubmit} className="centre form" encType="multipart/form-data" >
     <label>
     Nombre
     <input
@@ -144,7 +144,7 @@ const Form = props => {
     <br></br>
     <label>
       Subir una imagen
-      <input type="file" ref={fileInput} name="image" />
+      <input type="file" ref={fileInput} name="file" />
     </label>
    
     <br></br>

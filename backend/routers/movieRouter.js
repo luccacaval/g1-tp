@@ -41,9 +41,11 @@ MovieRouter.get('/movies', (req, res) =>{
     })
 })
 
-MovieRouter.post('/movies', upload.single("image"),(req, res) =>{
-    const Movie1 = Movie(req.body)
-    Movie1.ImagePath = req.file.path
+MovieRouter.post('/movies', upload.any("file"),(req, res) =>{
+  const Movie1 = Movie(req.body);
+  
+    Movie1.ImagePath = req.files[0].path;
+    console.log(Movie1);
     Movie1.save((err, Movie1) => {
         res.status(201).json(Movie1);
     })
