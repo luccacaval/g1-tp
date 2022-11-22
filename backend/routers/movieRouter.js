@@ -8,12 +8,14 @@ MovieRouter.use((error, req, res, next) => {
     console.log('This is the rejected field ->', error.field);
   });
 
+  
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, "./uploads");
     },
     filename: (req, file, cb) => {
-      cb(null, new Date().toISOString() + file.originalname);
+      cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
     }
   });
   

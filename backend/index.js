@@ -4,7 +4,9 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import cors from "cors";
 import MovieRouter from "./routers/movieRouter.js";
-import multer from "multer";
+import dotenv from "dotenv"
+import path from "node:path"
+
 
 //config vars
 const port = process.env.port || 4000;
@@ -23,6 +25,7 @@ mongoose.connect(db,() => {
 
 // Activar JSON y morgan
 
+
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
@@ -30,5 +33,10 @@ app.use(cors());
 app.use((error, req, res, next) => {
   console.log('This is the rejected field ->', error.field);
 });
+
+app.use('/uploads/:path', (req, res) => {
+  console.log(path.resolve("./uploads/" + req.params.path));
+  res.sendFile(path.resolve("./uploads/" + req.params.path))
+})
 
 app.use("/", MovieRouter);
