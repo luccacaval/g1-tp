@@ -30,11 +30,12 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
-app.use((error, req, res, next) => {
-  console.log('This is the rejected field ->', error.field);
+app.use(express.static('public'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.use('/uploads/:path', (req, res) => {
+app.get('/uploads/:path', (req, res) => {
   console.log(path.resolve("./uploads/" + req.params.path));
   res.sendFile(path.resolve("./uploads/" + req.params.path))
 })
